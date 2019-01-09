@@ -62,6 +62,7 @@ import android.content.SharedPreferences.Editor;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.InputDevice;
 import android.view.KeyEvent;
@@ -879,7 +880,11 @@ public class HomeScreen extends Activity implements AlaxSDK {
                 Utils.savePaidSharedPref(this, LicenseEnum.PAID);
                 startPuzzleGame();
             } else {
-                Toast.makeText(this, data.getStringExtra(AlaxPay.PARAM_RESULT_ERROR), Toast.LENGTH_SHORT).show();
+                if (data != null) {
+                    Toast.makeText(this, data.getStringExtra(AlaxPay.PARAM_RESULT_ERROR), Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.e("ALAX", "Unknown error");
+                }
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
