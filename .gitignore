@@ -90,7 +90,6 @@ fabric.properties
 # Generated files
 bin/
 gen/
-out/
 
 # Gradle files
 .gradle/
@@ -174,10 +173,7 @@ Temporary Items
 .idea/modules.xml
 .idea/runConfigurations.xml
 .idea/vcs.xml
-app/
-build.gradle
 frozenbubbleandroid.iml
-gradle/
 gradlew
 gradlew.bat
 import-summary.txt
@@ -185,3 +181,4 @@ settings.gradle
 library/.gitignore
 library/proguard-rules.pro
 library/src/
+library/build.gradle
