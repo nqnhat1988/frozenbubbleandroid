@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Frostkúlur</string>
+    <string name="app_name">AlaxGameDemo</string>
     <string name="exit">Hætta í forriti</string>
     <string name="install_editor">Beini þér í forritasafn þar sem þú getur sótt ritil fyrir Frostkúlu-borð</string>
     <string name="market_missing">Finn ekki Android Market! Þú verður að setja handvirkt upp ritil fyrir Frostkúlu-borð</string>
