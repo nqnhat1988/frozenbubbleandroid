@@ -40,5 +40,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.google.code.gson:gson:2.8.4'
-    implementation 'com.github.nqnhat1988:alax-pay-sdk:0.3.1'
+    debugImplementation 'com.github.nqnhat1988:alax-pay-sdk:0.3.1'
+    releaseImplementation 'com.github.alaxio:alax-pay-sdk:0.3.0'
 }

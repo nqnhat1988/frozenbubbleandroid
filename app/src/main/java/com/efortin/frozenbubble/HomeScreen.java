@@ -87,6 +87,7 @@ import alax.AlaxSDK;
 import alax.LicenseEnum;
 import alax.Utils;
 import io.alax.sdk.pay.AlaxPay;
+import io.alax.sdk.pay.BuildConfig;
 import io.alax.sdk.pay.model.Asset;
 import io.alax.sdk.pay.model.InvalidAmountException;
 import io.alax.sdk.pay.model.TransferInput;
@@ -1210,18 +1211,35 @@ public class HomeScreen extends Activity implements AlaxSDK {
 
     @Override
     public void callPaidAction() {
-        try {
-            AlaxPay.Ui.requestTransferActivity(
-                    new TransferInput(
-                            RECEIVER_ACCOUNT,
-                            PRICE,
-                            Asset.ALAT
-                    ),
-                    this,
-                    ALAX_SDK_ACTIVITY_CODE
-            );
-        } catch (InvalidAmountException e) {
-            e.printStackTrace();
+        if (BuildConfig.DEBUG) {
+            try {
+                AlaxPay.Ui.requestTransferActivity(
+                        new TransferInput(
+                                RECEIVER_ACCOUNT,
+                                PRICE,
+                                Asset.ALAT
+                        ),
+                        this,
+                        ALAX_SDK_ACTIVITY_CODE
+                );
+            } catch (InvalidAmountException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                AlaxPay.Ui.requestTransferActivity(
+                        new TransferInput(
+                                RECEIVER_ACCOUNT,
+                                PRICE,
+                                Asset.AIA
+                        ),
+                        this,
+                        ALAX_SDK_ACTIVITY_CODE
+                );
+            } catch (InvalidAmountException e) {
+                e.printStackTrace();
+            }
         }
+
     }
 }
