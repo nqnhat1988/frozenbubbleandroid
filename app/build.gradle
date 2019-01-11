@@ -7,13 +7,20 @@ android {
     buildToolsVersion "28.0.3"
 
     defaultConfig {
-        applicationId "org.jfedor.frozenbubble"
+        applicationId "io.alax.frozenbubble"
         minSdkVersion 16
         targetSdkVersion 26
 
         ndk {
             moduleName "modplug-1.0"
         }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
     }
 
     externalNativeBuild {

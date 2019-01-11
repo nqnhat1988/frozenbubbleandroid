@@ -68,8 +68,7 @@
         <activity
             android:name="com.efortin.frozenbubble.HomeScreen"
             android:configChanges="keyboardHidden|orientation"
-            android:label="AlaxGameDemo (S)
-"
+            android:label="AlaxGameDemo"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -84,20 +84,16 @@ import org.jfedor.frozenbubble.R;
 import org.jfedor.frozenbubble.SoundManager;
 
 import alax.AlaxSDK;
+import alax.Constant;
 import alax.LicenseEnum;
 import alax.Utils;
 import io.alax.sdk.pay.AlaxPay;
-import io.alax.sdk.pay.BuildConfig;
-import io.alax.sdk.pay.model.Asset;
 import io.alax.sdk.pay.model.InvalidAmountException;
 import io.alax.sdk.pay.model.TransferInput;
 import io.alax.sdk.pay.rest.TrustAllCerts;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-
-import static alax.Constant.PRICE;
-import static alax.Constant.RECEIVER_ACCOUNT;
 
 public class HomeScreen extends Activity implements AlaxSDK {
     /*
@@ -878,7 +874,7 @@ public class HomeScreen extends Activity implements AlaxSDK {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == ALAX_SDK_ACTIVITY_CODE) {
             if (resultCode == Activity.RESULT_OK) {
-                Utils.savePaidSharedPref(this, LicenseEnum.PAID);
+                Utils.INSTANCE.savePaidSharedPref(this, LicenseEnum.PAID);
                 startPuzzleGame();
             } else {
                 if (data != null) {
@@ -899,7 +895,7 @@ public class HomeScreen extends Activity implements AlaxSDK {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HttpUrl url = HttpUrl.parse("http://stagesocket.decentgo.com:8090/");
+        HttpUrl url = HttpUrl.parse(Constant.DCORE_URL);
         TrustAllCerts certs = TrustAllCerts.INSTANCE;
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -1206,40 +1202,23 @@ public class HomeScreen extends Activity implements AlaxSDK {
 
     @Override
     public LicenseEnum checkLicense() {
-        return Utils.loadPaidSharedPref(this);
+        return Utils.INSTANCE.loadPaidSharedPref(this);
     }
 
     @Override
     public void callPaidAction() {
-        if (BuildConfig.DEBUG) {
-            try {
-                AlaxPay.Ui.requestTransferActivity(
-                        new TransferInput(
-                                RECEIVER_ACCOUNT,
-                                PRICE,
-                                Asset.ALAT
-                        ),
-                        this,
-                        ALAX_SDK_ACTIVITY_CODE
-                );
-            } catch (InvalidAmountException e) {
-                e.printStackTrace();
-            }
-        } else {
-            try {
-                AlaxPay.Ui.requestTransferActivity(
-                        new TransferInput(
-                                RECEIVER_ACCOUNT,
-                                PRICE,
-                                Asset.AIA
-                        ),
-                        this,
-                        ALAX_SDK_ACTIVITY_CODE
-                );
-            } catch (InvalidAmountException e) {
-                e.printStackTrace();
-            }
+        try {
+            AlaxPay.Ui.requestTransferActivity(
+                    new TransferInput(
+                            Constant.INSTANCE.getRECEIVER_ACCOUNT(),
+                            Constant.INSTANCE.getPRICE(),
+                            Constant.INSTANCE.getASSET()
+                    ),
+                    this,
+                    ALAX_SDK_ACTIVITY_CODE
+            );
+        } catch (InvalidAmountException e) {
+            e.printStackTrace();
         }
-
     }
 }
