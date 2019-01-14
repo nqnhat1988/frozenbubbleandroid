@@ -14,5 +14,5 @@ object Constant {
   val ASSET: Asset
     get() = if (BuildConfig.DEBUG) Asset.valueOf("ALAT") else Asset.valueOf("AIA")
 
-  val PRICE = BigDecimal.valueOf(0.01)
+  val PRICE = BigDecimal.valueOf(0.1)
 }
