@@ -15,4 +15,10 @@ object Constant {
     get() = if (BuildConfig.DEBUG) Asset.valueOf("ALAT") else Asset.valueOf("AIA")
 
   val PRICE = BigDecimal.valueOf(0.1)
+
+  val APIKEY : String
+    get() = "sampleAPIKey"
+
+  val BUNDLEID : String
+    get() = "com.bundle.id"
 }

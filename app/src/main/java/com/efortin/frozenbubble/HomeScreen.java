@@ -1212,7 +1212,9 @@ public class HomeScreen extends Activity implements AlaxSDK {
                     new TransferInput(
                             Constant.INSTANCE.getRECEIVER_ACCOUNT(),
                             Constant.INSTANCE.getPRICE(),
-                            Constant.INSTANCE.getASSET()
+                            Constant.INSTANCE.getASSET(),
+                            Constant.INSTANCE.getAPIKEY(),
+                            Constant.INSTANCE.getBUNDLEID()
                     ),
                     this,
                     ALAX_SDK_ACTIVITY_CODE

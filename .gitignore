@@ -178,7 +178,5 @@ gradlew
 gradlew.bat
 import-summary.txt
 settings.gradle
-library/.gitignore
-library/proguard-rules.pro
-library/src/
-library/build.gradle
+app/release/
+
